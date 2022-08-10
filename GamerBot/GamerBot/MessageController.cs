@@ -95,57 +95,67 @@ public class MessageController
             
             if (userMessage[..4] == "edit")
             {
-                string[] messageArray = message.Text.Split('\n');
-                List<string> userInfo = messageArray.ToList();
-            
-                switch (userInfo[2])
+                try
                 {
-                    case "Возраст":
-                        var modelAge = new AgeEditViewModel
-                        {
-                            Email = userInfo[1],
-                            Age = Convert.ToInt32(userInfo[3]),
-                        };
+                    string[] messageArray = message.Text.Split('\n');
+                    List<string> userInfo = messageArray.ToList();
+            
+                    switch (userInfo[2])
+                    {
+                        case "Возраст":
+                            var modelAge = new AgeEditViewModel
+                            {
+                                Email = userInfo[1],
+                                Age = Convert.ToInt32(userInfo[3]),
+                            };
                         
-                        _userService.EditAge(modelAge);
-                        break;
+                            _userService.EditAge(modelAge);
+                            break;
 
-                    case "Игра":
-                        var modelGame = new GameEditViewModel()
-                        {
-                            Email = userInfo[1],
-                            Game = userInfo[3],
-                        };
+                        case "Игра":
+                            var modelGame = new GameEditViewModel()
+                            {
+                                Email = userInfo[1],
+                                Game = userInfo[3],
+                            };
                         
-                        _userService.EditGame(modelGame);
-                        break;
+                            _userService.EditGame(modelGame);
+                            break;
                     
-                    case "Steam URL":
-                        var modelSteam = new SteamEditViewModel
-                        {
-                            Email = userInfo[1],
-                            SteamUrl = userInfo[3],
-                        };
+                        case "Steam URL":
+                            var modelSteam = new SteamEditViewModel
+                            {
+                                Email = userInfo[1],
+                                SteamUrl = userInfo[3],
+                            };
                         
-                        _userService.EditSteam(modelSteam);
-                        break;
+                            _userService.EditSteam(modelSteam);
+                            break;
                     
-                    case "Звание":
-                        var modelRank = new RankEditViewModel
-                        {
-                            Email = userInfo[1],
-                            Rank = userInfo[3],
-                        };
+                        case "Звание":
+                            var modelRank = new RankEditViewModel
+                            {
+                                Email = userInfo[1],
+                                Rank = userInfo[3],
+                            };
                         
-                        _userService.EditRank(modelRank);
-                        break;
+                            _userService.EditRank(modelRank);
+                            break;
                     
-                    default: 
-                        await botClient.SendTextMessageAsync(message.Chat.Id, "Такое поле не найдено, либо его нельзя изменить");
-                        break;
-                }
+                        default: 
+                            await botClient.SendTextMessageAsync(message.Chat.Id, "Такое поле не найдено, либо его нельзя изменить");
+                            break;                    
+                    }
                 
-                await botClient.SendTextMessageAsync(message.Chat.Id, "Пользователь успешно редактирован.");
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Пользователь успешно редактирован.");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Введённые данные не корректны.");
+                    Console.WriteLine(ex.Message);
+                    return;
+                }
             }
             
             if (userMessage == "start search")
@@ -158,53 +168,11 @@ public class MessageController
                 
                 return;
             }
-
-            if (userMessage[..6] == "search")
-            {
-                string[] messageArray = message.Text.Split('\n');
-                List<string> userInfo = messageArray.ToList();
             
-                var model = new SearchViewModel()
-                {
-                    Game = userInfo[1],
-                    Rank = userInfo[2]
-                };
-                
-                teammates = _userService.Search(model);
-
-                if (teammates.Count == 0)
-                {
-                    await botClient.SendTextMessageAsync(message.Chat.Id, $"Пока в моей базе нет таких игроков :(", 
-                        replyMarkup: KeyboardMain());
-                }
-
-                index = 0;
-                
-                NextTeammate(botClient, message);
-                
-                return;
-            }
-
             if (userMessage == "delete account")
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, "Введите ключевое слово Удалить и ваш Email для удаления аккаунта, следуйте примеру:\n" + 
                                                                       "Delete\nEmail");
-                return;
-            }
-
-            if (userMessage[..6] == "delete")
-            {
-                string[] messageArray = message.Text.Split('\n');
-                List<string> userInfo = messageArray.ToList();
-            
-                var model = new DeleteViewModel()
-                {
-                    Email = userInfo[1],
-                };
-
-                await botClient.SendTextMessageAsync(message.Chat.Id, $"{_userService.Delete(model)}", 
-                    replyMarkup: KeyboardMain());
-                
                 return;
             }
             
@@ -215,24 +183,101 @@ public class MessageController
                 return;
             }
 
-            if (userMessage[..12] == "registration")
+            if (userMessage.Length >= 6)
             {
-                string[] messageArray = message.Text.Split('\n');
-                List<string> userInfo = messageArray.ToList();
-            
-                var model = new UserCreateViewModel
+                try
                 {
-                    Email = userInfo[1],
-                    Name = userInfo[2],
-                    Age = Convert.ToInt32(userInfo[3]),
-                    SteamUrl = userInfo[4],
-                    Game = userInfo[5],
-                    Rank = userInfo[6]
-                };
+                    if (userMessage[..6] == "search")
+                    {
+                        string[] messageArray = message.Text.Split('\n');
+                        List<string> userInfo = messageArray.ToList();
             
-                _userService.Create(model);
+                        var model = new SearchViewModel()
+                        {
+                            Game = userInfo[1],
+                            Rank = userInfo[2]
+                        };
+                
+                        teammates = _userService.Search(model);
+
+                        if (teammates.Count == 0)
+                        {
+                            await botClient.SendTextMessageAsync(message.Chat.Id, $"Пока в моей базе нет таких игроков :(", 
+                                replyMarkup: KeyboardMain());
+                        }
+
+                        index = 0;
+                
+                        NextTeammate(botClient, message);
+                
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Введённые данные не корректны.");
+                    Console.WriteLine(ex.Message);
+                    return;
+                }
+            }
+
+            if (userMessage.Length >= 6)
+            {
+                try
+                {
+                    if (userMessage[..6] == "delete")
+                    {
+                        string[] messageArray = message.Text.Split('\n');
+                        List<string> userInfo = messageArray.ToList();
             
-                await botClient.SendTextMessageAsync(message.Chat.Id, "Пользователь добавлен успешно.");
+                        var model = new DeleteViewModel()
+                        {
+                            Email = userInfo[1],
+                        };
+
+                        await botClient.SendTextMessageAsync(message.Chat.Id, $"{_userService.Delete(model)}", 
+                            replyMarkup: KeyboardMain());
+                
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Введённые данные не корректны.");
+                    Console.WriteLine(ex.Message);
+                    return;
+                }
+            }
+
+            if (userMessage.Length >= 12)
+            {
+                if (userMessage[..12] == "registration")
+                {
+                    try
+                    {
+                        string[] messageArray = message.Text.Split('\n');
+                        List<string> userInfo = messageArray.ToList();
+            
+                        var model = new UserCreateViewModel
+                        {
+                            Email = userInfo[1],
+                            Name = userInfo[2],
+                            Age = Convert.ToInt32(userInfo[3]),
+                            SteamUrl = userInfo[4],
+                            Game = userInfo[5],
+                            Rank = userInfo[6]
+                        };
+            
+                        _userService.Create(model);
+            
+                        await botClient.SendTextMessageAsync(message.Chat.Id, "Пользователь добавлен успешно.");
+                    }
+                    catch (Exception ex)
+                    {
+                        await botClient.SendTextMessageAsync(message.Chat.Id, "Введённые данные не корректны.");
+                        Console.WriteLine(ex.Message);
+                    }
+                }
             }
             else
             {

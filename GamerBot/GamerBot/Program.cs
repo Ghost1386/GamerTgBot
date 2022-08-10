@@ -24,7 +24,7 @@ namespace GamerBot
 
             IMapper mapper = mappingConfig.CreateMapper();
 
-            string connection = "Server=localhost;Database=PolessuBotApp;Trusted_Connection=True;";
+            string connection = "Server=localhost;Database=GamerBotApp;Trusted_Connection=True;";
             
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
