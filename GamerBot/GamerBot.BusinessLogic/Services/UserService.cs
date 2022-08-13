@@ -34,14 +34,20 @@ public class UserService : IUserService
 
     public List<TeammateViewModel> Search(SearchViewModel model)
     {
-        List<User> users = _context.Users.Where(x => x.Game == model.Game && x.Rank == model.Rank).ToList();
+        IQueryable<User> query = _context.Users.AsQueryable();
 
-        var teammates = new List<TeammateViewModel>();
+        query = query.Where(x => x.Game == model.Game);
+        query = query.Where(x => x.Rank == model.Rank);
+        query = query.Where(x => x.ChatId != model.ChatId);
+
+        List<User> users = query.ToList();
 
         if (users.Count == 0)
         {
             return null;
         }
+        
+        var teammates = new List<TeammateViewModel>();
         
         for (int i = 0; i < users.Count; i++)
         {

@@ -15,4 +15,6 @@ public class User
     public string Game { get; set; }
 
     public string Rank { get; set; }
+    
+    public long ChatId { get; set; }
 }

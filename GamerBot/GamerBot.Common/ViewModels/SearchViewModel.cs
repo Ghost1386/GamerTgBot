@@ -5,6 +5,9 @@ namespace GamerBot.Common.ViewModels;
 public class SearchViewModel
 {
     [Required]
+    public long ChatId { get; set; }
+    
+    [Required]
     public string Game { get; set; }
     
     [Required]

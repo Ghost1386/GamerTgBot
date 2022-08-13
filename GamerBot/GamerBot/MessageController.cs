@@ -194,6 +194,7 @@ public class MessageController
             
                         var model = new SearchViewModel()
                         {
+                            ChatId = message.Chat.Id,
                             Game = userInfo[1],
                             Rank = userInfo[2]
                         };
@@ -265,7 +266,8 @@ public class MessageController
                             Age = Convert.ToInt32(userInfo[3]),
                             SteamUrl = userInfo[4],
                             Game = userInfo[5],
-                            Rank = userInfo[6]
+                            Rank = userInfo[6],
+                            ChatId = message.Chat.Id
                         };
             
                         _userService.Create(model);

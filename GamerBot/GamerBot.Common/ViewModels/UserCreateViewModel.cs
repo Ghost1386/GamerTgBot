@@ -21,4 +21,7 @@ public class UserCreateViewModel
     
     [Required]
     public string Rank { get; set; }
+    
+    [Required]
+    public long ChatId { get; set; }
 }
