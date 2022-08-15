@@ -44,7 +44,7 @@ public class UserService : IUserService
 
         if (users.Count == 0)
         {
-            return null;
+            return new List<TeammateViewModel>();
         }
         
         var teammates = new List<TeammateViewModel>();

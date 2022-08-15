@@ -22,7 +22,7 @@ public class MessageController
         _userService = userService;
     }
     
-        public async Task HandleUpdatesAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    public async Task HandleUpdatesAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             if (update.Type == UpdateType.Message && update.Message?.Text != null)
             {
@@ -30,7 +30,7 @@ public class MessageController
             }
         }
 
-        private static async Task HadleMessage(ITelegramBotClient botClient, Message message)
+    private static async Task HadleMessage(ITelegramBotClient botClient, Message message)
         {
             if (CheckException(message) != null)
             {
@@ -205,6 +205,7 @@ public class MessageController
                         {
                             await botClient.SendTextMessageAsync(message.Chat.Id, $"Пока в моей базе нет таких игроков :(", 
                                 replyMarkup: KeyboardMain());
+                            return;
                         }
 
                         index = 0;
@@ -216,7 +217,7 @@ public class MessageController
                 }
                 catch (Exception ex)
                 {
-                    await botClient.SendTextMessageAsync(message.Chat.Id, "Введённые данные не корректны.");
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Введённые данные некорректны.");
                     Console.WriteLine(ex.Message);
                     return;
                 }
@@ -287,7 +288,7 @@ public class MessageController
             }
         }
 
-        public Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
+    public Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             var ErrorMessage = exception switch
             {
@@ -300,7 +301,7 @@ public class MessageController
             return Task.CompletedTask;
         }
 
-        private static string CheckException(Message message)
+    private static string CheckException(Message message)
         {
             if (string.IsNullOrWhiteSpace(message.Text))
             {
@@ -315,7 +316,7 @@ public class MessageController
             return null;
         }
         
-        private static async void NextTeammate(ITelegramBotClient botClient, Message message)
+    private static async void NextTeammate(ITelegramBotClient botClient, Message message)
         {
             if (index == teammates.Count)
             {
@@ -330,7 +331,7 @@ public class MessageController
                        $"{teammates[index].SteamUrl}", replyMarkup:KeyboardSearch());
         }
         
-        private static ReplyKeyboardMarkup KeyboardSearch()
+    private static ReplyKeyboardMarkup KeyboardSearch()
         {
             ReplyKeyboardMarkup keyboardSearch = new(new[]
             {
@@ -343,7 +344,7 @@ public class MessageController
             return keyboardSearch;
         }
         
-        private static ReplyKeyboardMarkup KeyboardMain()
+    private static ReplyKeyboardMarkup KeyboardMain()
         {
             ReplyKeyboardMarkup keyboardMain = new(new[]
             {
