@@ -1,0 +1,17 @@
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\bin\Debug\net6.0\GamerBot.BusinessLogic.deps.json
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\bin\Debug\net6.0\GamerBot.BusinessLogic.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\bin\Debug\net6.0\GamerBot.BusinessLogic.pdb
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\bin\Debug\net6.0\GamerBot.Common.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\bin\Debug\net6.0\GamerBot.Model.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\bin\Debug\net6.0\GamerBot.Common.pdb
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\bin\Debug\net6.0\GamerBot.Model.pdb
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.AssemblyInfo.cs
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.csproj.CopyComplete
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\refint\GamerBot.BusinessLogic.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\GamerBot.BusinessLogic.pdb
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.BusinessLogic\obj\Debug\net6.0\ref\GamerBot.BusinessLogic.dll

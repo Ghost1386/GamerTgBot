@@ -1,0 +1,12 @@
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\bin\Debug\net6.0\GamerBot.Model.deps.json
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\bin\Debug\net6.0\GamerBot.Model.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\bin\Debug\net6.0\GamerBot.Model.pdb
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\GamerBot.Model.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\GamerBot.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\GamerBot.Model.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\GamerBot.Model.AssemblyInfo.cs
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\GamerBot.Model.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\GamerBot.Model.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\refint\GamerBot.Model.dll
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\GamerBot.Model.pdb
+C:\Users\user\Desktop\GamerTgBot\GamerBot\GamerBot.Model\obj\Debug\net6.0\ref\GamerBot.Model.dll
